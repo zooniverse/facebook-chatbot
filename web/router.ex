@@ -5,7 +5,10 @@ defmodule Chatbot.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Chatbot do
+  scope "/", Chatbot do
     pipe_through :api
+
+    get "/webhook", WebhookController, :get
+    post "/webhook", WebhookController, :post
   end
 end
